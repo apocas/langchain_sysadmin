@@ -1,0 +1,14 @@
+{"version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Main File",
+      "type": "python",
+      "request": "launch",
+      "program": "main.py",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "args": ["root@94.46.161.138"],
+      "purpose": ["debug-in-terminal"]
+    }
+  ]
+}
