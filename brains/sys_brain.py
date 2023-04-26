@@ -65,4 +65,4 @@ class SysBrain:
         self.memory.chat_memory.add_user_message(message)
 
     def run(self, message):
-        self.agent.run(message)
+        return self.agent.run(message)
