@@ -19,7 +19,6 @@ sysbrain = SysBrain()
 
 
 sysbrain.run("find which linux distribution is running on this server")
-sysbrain.run("create a new nginx vhost that loadbalances the hosts 192.168.1.10 and 192.168.1.20, dont use interactive editors")
 
 while True:
     try:

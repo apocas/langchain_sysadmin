@@ -8,7 +8,7 @@ from langchain.tools import BaseTool
 
 class ExecuteCommand(BaseTool):
     name = "Execute Command"
-    description = "Use this tool to execute a command via SSH and get the output. Send the command you want to execute as the query. Command must be non-interactive and cant run forever."
+    description = "Use this tool to execute a command via SSH and get the output. Command must be non-interactive and cant run forever. Send the command you want to execute as the query."
 
     def ssh_execute(self, ip, username, keyfile, command, timeout=10):
       client = paramiko.SSHClient()
