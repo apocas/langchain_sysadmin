@@ -2,8 +2,7 @@
 PREFIX = """Assistant is a large language model trained by OpenAI.
 
 Assistant is designed to be an system administrator assistant for linux servers. It is able to assist with a wide range of tasks.
-
-Assistant is constantly learning and improving, and its capabilities are constantly evolving."""
+"""
 
 FORMAT_INSTRUCTIONS = """RESPONSE FORMAT INSTRUCTIONS
 ----------------------------
