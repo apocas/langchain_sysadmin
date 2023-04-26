@@ -8,13 +8,13 @@ from langchain.schema import AgentAction, AgentFinish, HumanMessage
 from langchain.agents.agent import AgentOutputParser
 from langchain.schema import AgentAction, AgentFinish
 
-from brains.prompt import FORMAT_INSTRUCTIONS, PREFIX, SUFFIX
+from brains.prompt2 import FORMAT_INSTRUCTIONS, PREFIX, SUFFIX
 
 from brains.tools import ExecuteCommand
 
 #https://github.com/hwchase17/langchain/blob/master/langchain/agents/conversational_chat/
 
-class ConvoOutputParser(AgentOutputParser):
+class SysOutputParser(AgentOutputParser):
     def get_format_instructions(self) -> str:
         return FORMAT_INSTRUCTIONS
 
@@ -47,12 +47,12 @@ class SysBrain:
         self.chat = ChatOpenAI(temperature=0, verbose=True,
                                model_name="gpt-3.5-turbo")
 
-        lex_agent = ConversationalChatAgent.from_llm_and_tools(
+        lex_agent = ConversationalAgent.from_llm_and_tools(
             llm=self.chat,
             tools=tools,
             system_message = PREFIX,
             human_message = SUFFIX,
-            output_parser = ConvoOutputParser()
+            #output_parser = ConvoOutputParser()
         )
 
         self.memory = ConversationBufferMemory(

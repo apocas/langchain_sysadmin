@@ -18,7 +18,7 @@ gbrain = GeneralBrain()
 sysbrain = SysBrain()
 
 
-#sysbrain.run("find which linux distribution is running on this server")
+sysbrain.run("find which linux distribution is running on this server")
 
 while True:
     try:
