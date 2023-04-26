@@ -32,7 +32,7 @@ class ExecuteCommand(BaseTool):
 
           enc = tiktoken.encoding_for_model("gpt-3.5-turbo")
           if len(enc.encode(result)) > 3000:
-              result = "The command output is too long. Please try a command with shorter ouput."
+              result = "The command output is too long. Please rewrite the command with shorter ouput. Just send the new command."
 
           #if result == "":
           stdin, stdout, stderr = client.exec_command("echo $?")
