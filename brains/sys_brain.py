@@ -14,29 +14,35 @@ from brains.tools import ExecuteCommand
 
 #https://github.com/hwchase17/langchain/blob/master/langchain/agents/conversational_chat/
 
+
+global gagent
 class SysOutputParser(AgentOutputParser):
     def get_format_instructions(self) -> str:
         return FORMAT_INSTRUCTIONS
 
     def parse(self, text: str) -> Union[AgentAction, AgentFinish]:
         cleaned_output = text.strip()
-        if "```json" in cleaned_output:
-            _, cleaned_output = cleaned_output.split("```json")
-        if "```" in cleaned_output:
-            cleaned_output, _ = cleaned_output.split("```")
-        if cleaned_output.startswith("```json"):
-            cleaned_output = cleaned_output[len("```json") :]
-        if cleaned_output.startswith("```"):
-            cleaned_output = cleaned_output[len("```") :]
-        if cleaned_output.endswith("```"):
-            cleaned_output = cleaned_output[: -len("```")]
-        cleaned_output = cleaned_output.strip()
-        response = json.loads(cleaned_output)
-        action, action_input = response["action"], response["action_input"]
-        if action == "Final Answer":
-            return AgentFinish({"output": action_input}, text)
-        else:
-            return AgentAction(action, action_input, text)
+        try:
+          print(cleaned_output)
+          if "```json" in cleaned_output:
+              _, cleaned_output = cleaned_output.split("```json")
+          if "```" in cleaned_output:
+              cleaned_output, _ = cleaned_output.split("```")
+          if cleaned_output.startswith("```json"):
+              cleaned_output = cleaned_output[len("```json") :]
+          if cleaned_output.startswith("```"):
+              cleaned_output = cleaned_output[len("```") :]
+          if cleaned_output.endswith("```"):
+              cleaned_output = cleaned_output[: -len("```")]
+          cleaned_output = cleaned_output.strip()
+          response = json.loads(cleaned_output)
+          action, action_input = response["action"], response["action_input"]
+          if action == "Final Answer":
+              return AgentFinish({"output": action_input}, text)
+          else:
+              return AgentAction(action, action_input, text)
+        except Exception as e:
+          return AgentFinish({"output": cleaned_output}, text)
 
 class SysBrain:
     def __init__(self):

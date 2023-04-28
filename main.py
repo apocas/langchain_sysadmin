@@ -24,14 +24,14 @@ while True:
     try:
         message = input("\n\nHUMAN: ")
 
-        type = gbrain.run(message)
+        #type = gbrain.run(message)
 
-        if type == "instruction":
-            sysbrain.run(message)
-        else:
-            if message != "":
-                sysbrain.addContext(message)
-                print("BOT: Gotcha, I'll remember that.")
+        #if type == "instruction":
+        sysbrain.run(message)
+        #else:
+        #    if message != "":
+        #        sysbrain.addContext(message)
+        #        print("BOT: Gotcha, I'll remember that.")
     except (KeyboardInterrupt, EOFError):
         print("\n\nBye! Pleasure to serve you.")
         break
