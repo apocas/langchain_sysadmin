@@ -10,7 +10,7 @@ from langchain.schema import AgentAction, AgentFinish
 
 from brains.prompt import FORMAT_INSTRUCTIONS, PREFIX, SUFFIX
 
-from brains.tools import ExecuteCommand
+from brains.tools import ExecuteCommand, ConnectCommand
 
 #https://github.com/hwchase17/langchain/blob/master/langchain/agents/conversational_chat/
 
@@ -47,7 +47,8 @@ class SysOutputParser(AgentOutputParser):
 class SysBrain:
     def __init__(self):
         tools = [
-            ExecuteCommand()
+            ExecuteCommand(),
+            ConnectCommand()
         ]
 
         self.chat = ChatOpenAI(temperature=0, verbose=True,

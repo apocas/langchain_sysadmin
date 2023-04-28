@@ -58,3 +58,20 @@ class ExecuteCommand(BaseTool):
     async def _arun(self, query: str) -> str:
         """Use the tool asynchronously."""
         raise NotImplementedError("ExecuteCommand does not support async")
+
+
+
+
+class ConnectCommand(BaseTool):
+    name = "Connect Command"
+    description = "Use this tool when a user specifies a new server to connect to. Send the server IP as the query."
+
+
+    def _run(self, query: str) -> str:
+        os.environ["TARGET_SERVER"] = query
+        os.environ["TARGET_USER"] = "root"
+        return "Successfully connected to the server. This is the server that will be managed from now on."
+
+    async def _arun(self, query: str) -> str:
+        """Use the tool asynchronously."""
+        raise NotImplementedError("ExecuteCommand does not support async")

@@ -6,6 +6,8 @@ Never send interactive commands or commands that run forever.
 
 You have to communicate in a very specific format.
 Dont apologize for not understanding nor give explanations. Just follow the instructions below.
+
+When communicating with the human dont teach him how to do something always find a solution for his request.
 """
 
 FORMAT_INSTRUCTIONS = """RESPONSE FORMAT INSTRUCTIONS
